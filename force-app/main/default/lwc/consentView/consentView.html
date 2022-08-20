@@ -1,0 +1,53 @@
+<template>
+    <lightning-card icon-name="standard:approval" title="Individual Record Data">
+        <!-- Don't process, don't market, export data, don't profile, don't track -->
+        <p class="slds-var-p-horizontal_small">
+            <template if:true={singleIndividual}>
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="6" flexibility="auto">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item padding="horizontal-small" size="12">
+                                <strong>Individual Name</strong>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small" size="12">
+                                <lightning-formatted-name
+                                    first-name={singleIndividual.FirstName}
+                                    last-name={singleIndividual.LastName}
+                                ></lightning-formatted-name>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small" size="12">
+                                <strong>Contact Point Email</strong>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small" size="12">
+                                <lightning-formatted-email
+                                    value={cpe}
+                                ></lightning-formatted-email>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small" size="12">
+                                <strong>Contact Point Mobile</strong>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small" size="12">
+                                <lightning-formatted-phone
+                                    value={cpp}
+                                ></lightning-formatted-phone>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="horizontal-small" size="6">
+                        <lightning-layout>
+                            <lightning-layout-item padding="around-small" flexibility="auto">
+                                <lightning-checkbox-group 
+                                    name="Consent Options"
+                                    label="Consent Options"
+                                    options={options}
+                                    value={values}
+                                    disabled>
+                                </lightning-checkbox-group>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+        </p>
+    </lightning-card>
+</template>
