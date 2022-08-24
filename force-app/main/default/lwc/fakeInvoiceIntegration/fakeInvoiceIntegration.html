@@ -1,0 +1,21 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-quick-action-panel header="Fetch China Invoices">
+        Click on the button to fetch orders from the China org. 
+        <template if:true={spinner}>
+            <lightning-spinner alternative-text="Churning the Butter"></lightning-spinner>
+        </template>
+        <div slot="footer">
+            <lightning-button 
+                variant="neutral" 
+                label="Cancel"
+                onclick={handleCancel}></lightning-button>
+            <lightning-button 
+                variant="brand" 
+                label="Fetch Invoices" 
+                class="slds-m-left_small"
+                onclick={createInvoiceData}
+                ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>
