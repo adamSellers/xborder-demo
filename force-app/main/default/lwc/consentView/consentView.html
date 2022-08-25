@@ -6,43 +6,64 @@
                 <lightning-layout>
                     <lightning-layout-item padding="around-small" size="6" flexibility="auto">
                         <lightning-layout multiple-rows>
-                            <lightning-layout-item padding="horizontal-small" size="12">
-                                <strong>Individual Name</strong>
-                            </lightning-layout-item>
-                            <lightning-layout-item padding="horizontal-small" size="12">
-                                <lightning-formatted-name
-                                    first-name={singleIndividual.FirstName}
-                                    last-name={singleIndividual.LastName}
-                                ></lightning-formatted-name>
-                            </lightning-layout-item>
-                            <lightning-layout-item padding="horizontal-small" size="12">
-                                <strong>Contact Point Email</strong>
-                            </lightning-layout-item>
-                            <lightning-layout-item padding="horizontal-small" size="12">
-                                <lightning-formatted-email
-                                    value={cpe}
-                                ></lightning-formatted-email>
-                            </lightning-layout-item>
-                            <lightning-layout-item padding="horizontal-small" size="12">
-                                <strong>Contact Point Mobile</strong>
-                            </lightning-layout-item>
-                            <lightning-layout-item padding="horizontal-small" size="12">
-                                <lightning-formatted-phone
-                                    value={cpp}
-                                ></lightning-formatted-phone>
-                            </lightning-layout-item>
+                            <div class="consent-view_row">
+                                <lightning-layout-item padding="horizontal-small" size="12">
+                                    <strong>Individual Name</strong>
+                                </lightning-layout-item>
+                                <div class="slds-p-top_xx-small">
+                                <lightning-layout-item padding="horizontal-small" size="12">
+                                    <lightning-formatted-name
+                                        first-name={singleIndividual.FirstName}
+                                        last-name={singleIndividual.LastName}
+                                    ></lightning-formatted-name>
+                                </lightning-layout-item>
+                            </div>
+                            </div>
+                            <div class="consent-view_row">
+                                <lightning-layout-item padding="horizontal-small" size="12">
+                                    <strong>Contact Point Email</strong>
+                                </lightning-layout-item>
+                                <div class="slds-p-top_xx-small">
+                                <lightning-layout-item padding="horizontal-small" size="12">
+                                    <span if:true={cpe}><lightning-formatted-email
+                                        value={cpe}
+                                ></lightning-formatted-email></span>
+                                    <span if:false={cpe}>N/A</span>
+                                </lightning-layout-item>
+                            </div>
+                            </div>
+                            <div class="consent-view_row">
+                                <lightning-layout-item padding="horizontal-small" size="12">
+                                    <strong>Contact Point Mobile</strong>
+                                </lightning-layout-item>
+                                <div class="slds-p-top_xx-small">
+                                <lightning-layout-item padding="horizontal-small" size="12">
+                                    <span if:true={cpp}><lightning-formatted-email
+                                        value={cpp}
+                                ></lightning-formatted-email></span>
+                                    <span if:false={cpp}>N/A</span>
+                                </lightning-layout-item>
+                            </div>
+                            </div>
                         </lightning-layout>
                     </lightning-layout-item>
                     <lightning-layout-item padding="horizontal-small" size="6">
                         <lightning-layout>
-                            <lightning-layout-item padding="around-small" flexibility="auto">
-                                <lightning-checkbox-group 
-                                    name="Consent Options"
-                                    label="Consent Options"
-                                    options={options}
-                                    value={values}
-                                    disabled>
-                                </lightning-checkbox-group>
+                            <lightning-layout-item class="slds-p-vertical_x-small" flexibility="auto">
+                                <fieldset class="slds-form-element">
+                                    <strong>Consent Options</strong>
+                                    <div class="slds-form-element__control slds-p-top_x-small">
+                                        <lightning-layout multiple-rows>
+                                        <div class="slds-checkbox slds-col slds-p-bottom_xx-small" for:each={options} for:item="option" key={option.value}>
+                                          <input type="checkbox" name="Consent Options" id={option.value} value={option.value} checked={option.value} onchange={updateSelected} disabled=""/>
+                                          <label class="slds-checkbox__label" for={option.value}>
+                                        <span  class="consent-view_checkbox slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label">{option.label}</span>
+                                      </label>
+                                        </div>
+                                      </lightning-layout>
+                                    </div>
+                                  </fieldset>
                             </lightning-layout-item>
                         </lightning-layout>
                     </lightning-layout-item>

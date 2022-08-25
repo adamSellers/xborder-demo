@@ -1,0 +1,14 @@
+.slds-checkbox [type=checkbox][disabled]+.slds-checkbox__label .slds-checkbox_faux {
+  background-color: #9D3E00;
+  border-color: #9D3E00;
+}
+.slds-checkbox [type=checkbox][disabled]+.slds-checkbox__label .slds-checkbox_faux:after {
+  border-color: white;
+}
+
+.consent-view_row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 9px;
+};
+
