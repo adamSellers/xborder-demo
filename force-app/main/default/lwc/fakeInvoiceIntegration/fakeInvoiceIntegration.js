@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CloseActionScreenEvent } from 'lightning/actions';
+import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 import demoDataCannon from '@salesforce/apex/CreateDemoInvoiceData.demoDataCannon';
 
 export default class FakeInvoiceIntegration extends LightningElement {
@@ -25,6 +26,7 @@ export default class FakeInvoiceIntegration extends LightningElement {
                         variant: 'success'
                     })
                 );
+                getRecordNotifyChange([{ recordId: this.recordId }]);
             })
             .catch( error => {
                 console.log(`there was an error: ${JSON.stringify(error)}`);
