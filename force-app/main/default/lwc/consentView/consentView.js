@@ -7,7 +7,7 @@ export default class ConsentView extends LightningElement {
     // then disply necessary consent flags as required
     @api recordId;
     singleIndividual;
-    cpe;
+    // cpe;
     cpp;
     options = [];
     error;
@@ -25,14 +25,14 @@ export default class ConsentView extends LightningElement {
             this.singleIndividual = data.indRecord[0];
             console.log(JSON.stringify(this.singleIndividual));
             for (const key in this.singleIndividual) {
-                if ( key !=="Id" && key !=="FirstName" && key !=="LastName" ) {
+                if ( key !=="Id" && key !=="FirstName" && key !=="LastName" && key !=="Union_ID__c") {
                     if (this.singleIndividual[key] === true) {
                         this.values.push(this.singleIndividual[key]);
                     }
                 this.options.push({label: key, value: this.singleIndividual[key]});
                 }
             }
-            this.cpe = data.cpe[0].EmailAddress;
+            // this.cpe = data.cpe[0].EmailAddress;
             this.cpp = data.cpp[0].TelephoneNumber;
         } else if (error) {
             this.error = error;
@@ -40,5 +40,4 @@ export default class ConsentView extends LightningElement {
             console.log(`was there an error?: ${JSON.stringify(error)}`);
         }
     }
-
 }

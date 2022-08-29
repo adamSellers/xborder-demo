@@ -21,14 +21,14 @@
                             </div>
                             <div class="consent-view_row">
                                 <lightning-layout-item padding="horizontal-small" size="12">
-                                    <strong>Contact Point Email</strong>
+                                    <strong>WeChat Union ID</strong>
                                 </lightning-layout-item>
                                 <div class="slds-p-top_xx-small">
                                 <lightning-layout-item padding="horizontal-small" size="12">
-                                    <span if:true={cpe}><lightning-formatted-email
-                                        value={cpe}
-                                ></lightning-formatted-email></span>
-                                    <span if:false={cpe}>N/A</span>
+                                    <span if:true={singleIndividual}><lightning-formatted-text
+                                        value={singleIndividual.Union_ID__c}
+                                ></lightning-formatted-text></span>
+                                    <span if:false={singleIndividual}>N/A</span>
                                 </lightning-layout-item>
                             </div>
                             </div>

@@ -11,12 +11,12 @@ public with sharing class consentViewController {
         ConsentResponseWrapper responder = new ConsentResponseWrapper();
 
         // Individual record from account
-        responder.indRecord = [SELECT Id, FirstName, LastName, CanStorePiiElsewhere, HasOptedOutGeoTracking, HasOptedOutProcessing, HasOptedOutProfiling, HasOptedOutTracking
+        responder.indRecord = [SELECT Id, FirstName, LastName, Union_ID__c, CanStorePiiElsewhere, HasOptedOutGeoTracking, HasOptedOutProcessing, HasOptedOutProfiling, HasOptedOutTracking
                                FROM Individual
                                WHERE Id =: indId  LIMIT 1];
 
-        // Contact Point Email from Individual Record
-        responder.cpe = [SELECT EmailAddress from ContactPointEmail where ParentId =: indId LIMIT 1];
+        // // Contact Point Email from Individual Record
+        // responder.cpe = [SELECT EmailAddress from ContactPointEmail where ParentId =: indId LIMIT 1];
 
         // Contact Point Email from Individual Record
         responder.cpp = [SELECT TelephoneNumber from ContactPointPhone where ParentId =: indId LIMIT 1];
